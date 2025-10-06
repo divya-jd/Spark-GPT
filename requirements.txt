@@ -1,0 +1,14 @@
+pyspark
+langchain
+openai
+faiss-cpu
+tiktoken
+pandas
+numpy
+scikit-learn
+fastapi
+uvicorn
+python-dotenv
+pyyaml
+sentence-transformers
+dspy-ai

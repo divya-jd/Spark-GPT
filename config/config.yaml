@@ -1,0 +1,12 @@
+databricks:
+  workspace_url: "https://<your-workspace>.azuredatabricks.net"
+  cluster_id: "0123-ABCD5678"
+  database_name: "spark_gpt"
+  
+llm:
+  model: "gpt-4"
+  temperature: 0.2
+  
+vector_store:
+  dimension: 768
+  index_path: "data/embeddings/vector_index.faiss"
