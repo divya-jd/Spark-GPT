@@ -1,19 +1,26 @@
-# SparkGPT — Distributed RAG on Databricks
+# SparkGPT — Distributed RAG Engine on Databricks
 
-A production-ready Retrieval-Augmented Generation (RAG) system that scales with **Apache Spark™ on Databricks**, uses SentenceTransformers for embeddings, FAISS/Delta for retrieval, and serves answers via FastAPI (optional Streamlit UI). Includes offline evals/telemetry for quality and latency.
+**SparkGPT** is an AI-powered, cloud-scale **Retrieval-Augmented Generation (RAG)** framework that blends the best of **Apache Spark™, LangChain, and FAISS** to turn large document collections into an intelligent, searchable knowledge base.
 
-## Features
-- Distributed document ingestion via **Spark**
-- Vector embeddings using **SentenceTransformers**
-- Scalable **RAG pipeline** with LangChain & FAISS
-- Deployment via **FastAPI / Streamlit**
-- Evaluation & Monitoring with latency and F1 metrics
+Built for **massive parallelism and low-latency reasoning**, SparkGPT ingests, embeds, and answers complex enterprise queries using **LLMs (GPT-4 / Claude)** ; all orchestrated over Databricks.
+
+## What It Does
+> Distributed Ingestion: Spark processes millions of documents into chunked Delta tables.
+
+> Intelligent Embeddings: SentenceTransformers convert text into high-dimensional vectors for semantic understanding.
+
+> Efficient Retrieval: FAISS ANN index ensures lightning-fast lookups across massive datasets.
+
+> RAG + LangChain: Combines retrieval with LLM reasoning for grounded, factual responses.
+
+> Scalable Serving: FastAPI or Streamlit endpoints deliver conversational AI at production scale.
+
+> Evaluation Suite: Built-in latency, F1, and retrieval precision metrics for continuous improvement.
 
 ## Tech Stack
-`Databricks` · `Apache Spark™` · `LangChain` · `DSPy` · `FAISS` · `Azure ML` · `Delta Lake` · `OpenAI`
+Databricks · Apache Spark™ · LangChain · DSPy · FAISS · SentenceTransformers · OpenAI · FastAPI · Delta Lake
 
-## Usage
-
+## Quickstart
 
 pip install -r requirements.txt
 
@@ -25,37 +32,23 @@ python src/vector_store.py build
 uvicorn src.deploy_api:app --reload
 
 
-## Prerequisites
+### 💬 Example Query
 
-Python ≥ 3.9
+Input:
+“Summarize the refund policy in the 2024 contract.”
 
-Databricks workspace + cluster (DBR 13 +)
+Response:
 
-OpenAI / Azure OpenAI API key
+{
+  "answer": "Customers can cancel within 30 days for a prorated refund...",
+  "sources": ["contract_2024.pdf#p3", "refund_policy.md#L12"],
+  "latency_ms": 421
+}
 
-FAISS & SentenceTransformers installed (pip install -r requirements.txt)
+# 🌟 Why SparkGPT?
+Because RAG shouldn’t be slow or fragile. SparkGPT fuses **distributed data processing, semantic retrieval, and LLM reasoning** into one cohesive system — making enterprise-scale AI knowledge retrieval fast, explainable, and production-ready.
 
-Optional but recommended:
+**Author**
 
-Unity Catalog for dataset organization
-
-Databricks Jobs for scheduled ingestion & embedding updates
-
-## 🧩 Installation
-
-# Clone
-git clone https://github.com/divya-jd/SparkGPT.git
-cd SparkGPT
-
-# Virtual env
-python3 -m venv venv
-source venv/bin/activate
-
-# Dependencies
-pip install -r requirements.txt
-
-## Running the Pipeline
-Step 1: Ingest Documents → Delta
-python src/spark_ingest.py --config conf/config.yaml
-
-
+Velankani Joise Divya G C
+@2025
